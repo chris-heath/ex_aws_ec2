@@ -160,7 +160,7 @@ defmodule ExAws.EC2 do
     next_token: binary
   ]
   @spec describe_nat_gateways() :: ExAws.Operation.Query.t
-  @spec describe_nat_gateways(opts :: describe_nat_gateway_opts) :: ExAws.Operation.Query.t
+  @spec describe_nat_gateways(opts :: describe_nat_gateways_opts) :: ExAws.Operation.Query.t
   def describe_nat_gateways(opts \\ []) do
     opts |> build_request(:describe_nat_gateways)
   end
