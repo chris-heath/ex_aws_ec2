@@ -153,6 +153,19 @@ defmodule ExAws.EC2 do
   end
 
 
+  @type describe_nat_gateways_opts :: [
+    filters: [filter, ...],
+    max_results: integer,
+    nat_gateway_ids: [binary, ...],
+    next_token: binary
+  ]
+  @spec describe_nat_gateways() :: ExAws.Operation.Query.t
+  @spec describe_nat_gateways(opts :: describe_nat_gateway_opts) :: ExAws.Operation.Query.t
+  def describe_nat_gateways(opts \\ []) do
+    opts |> build_request(:describe_nat_gateways)
+  end
+
+
   @doc """
   Describes the status of one or more instances. By default, only running
   instances are described, unless specified otherwise.
