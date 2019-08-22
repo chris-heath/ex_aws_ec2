@@ -108,6 +108,52 @@ defmodule ExAws.EC2 do
   ]
 
   #######################
+  # NAT Gateway Operations #
+  #######################
+
+  @doc """
+  Describes one or more NAT Gateways
+
+  Doc: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNatGateways.html
+
+  ## Examples:
+
+      iex> ExAws.EC2.describe_nat_gateways()
+        %ExAws.Operation.Query{
+          action: :describe_nat_gateways,
+          params: %{"Action" => "DescribeNatGateways", "Version" => "2016-11-15"},
+          parser: &ExAws.Utils.identity/2,
+          path: "/",
+          service: :ec2
+        }
+
+      ExAws.EC2.describe_nat_gateways([filters: %{"nat-gateway-id": "nat-gateway-1234"}])
+        %ExAws.Operation.Query{
+          action: :describe_nat_gateways,
+          params: %{
+            "Action" => "DescribeNatGateways",
+            "Filter.1.Name" => "nat-gateway-id",
+            "Filter.1.Value" => "nat-gateway-1234",
+            "Version" => "2016-11-15"
+          },
+          parser: &ExAws.Utils.identity/2,
+          path: "/",
+          service: :ec2
+        }
+  """
+  @type describe_nat_gateways_opts :: [
+    filters: [filter, ...],
+    max_results: integer,
+    nat_gateway_ids: [binary, ...],
+    next_token: binary
+  ]
+  @spec describe_nat_gateways() :: ExAws.Operation.Query.t
+  @spec describe_nat_gateways(opts :: describe_nat_gateways_opts) :: ExAws.Operation.Query.t
+  def describe_nat_gateways(opts \\ []) do
+    opts |> build_request(:describe_nat_gateways)
+  end
+
+  #######################
   # Instance Operations #
   #######################
 
@@ -151,20 +197,6 @@ defmodule ExAws.EC2 do
   def describe_instances(opts \\ []) do
     opts |> build_request(:describe_instances)
   end
-
-
-  @type describe_nat_gateways_opts :: [
-    filters: [filter, ...],
-    max_results: integer,
-    nat_gateway_ids: [binary, ...],
-    next_token: binary
-  ]
-  @spec describe_nat_gateways() :: ExAws.Operation.Query.t
-  @spec describe_nat_gateways(opts :: describe_nat_gateways_opts) :: ExAws.Operation.Query.t
-  def describe_nat_gateways(opts \\ []) do
-    opts |> build_request(:describe_nat_gateways)
-  end
-
 
   @doc """
   Describes the status of one or more instances. By default, only running
