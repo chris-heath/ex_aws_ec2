@@ -107,9 +107,9 @@ defmodule ExAws.EC2 do
     tenancy: binary
   ]
 
-  #######################
+  ##########################
   # NAT Gateway Operations #
-  #######################
+  ##########################
 
   @doc """
   Describes one or more NAT Gateways
@@ -144,13 +144,102 @@ defmodule ExAws.EC2 do
   @type describe_nat_gateways_opts :: [
     filters: [filter, ...],
     max_results: integer,
-    nat_gateway_ids: [binary, ...],
+    nat_gateway_id: [binary, ...],
     next_token: binary
   ]
   @spec describe_nat_gateways() :: ExAws.Operation.Query.t
   @spec describe_nat_gateways(opts :: describe_nat_gateways_opts) :: ExAws.Operation.Query.t
   def describe_nat_gateways(opts \\ []) do
     opts |> build_request(:describe_nat_gateways)
+  end
+
+  #######################
+  # Network Operations  #
+  #######################
+
+  @doc """
+  Describes the specified Elastic IP addresses or all of your Elastic IP addresses.
+
+  An Elastic IP address is for use in either the EC2-Classic platform or in a VPC.
+
+  Doc: https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-addresses.html
+
+  ## Examples:
+
+    iex> ExAws.EC2.describe_addresses()
+      %ExAws.Operation.Query{
+        action: :describe_addresses,
+        params: %{"Action" => "DescribeAddresses", "Version" => "2016-11-15"},
+        parser: &ExAws.Utils.identity/2,
+        path: "/",
+        service: :ec2
+      }
+
+    iex> EC2.describe_addresses([allocation_id: ["eipalloc-12345abcdefg"]])
+      %ExAws.Operation.Query{
+        action: :describe_addresses,
+        params: %{
+          "Action" => "DescribeAddresses",
+          "AllocationId.1" => "eipalloc-12345abcdefg",
+          "Version" => "2016-11-15"
+        },
+        parser: &ExAws.Utils.identity/2,
+        path: "/",
+        service: :ec2
+      }
+  """
+  @type describe_addresses_opts :: [
+    filters: [filter, ...],
+    public_ip: [binary, ...],
+    allocation_id: [binary, ...],
+    dry_run: boolean
+  ]
+  @spec describe_addresses() :: ExAws.Operation.Query.t
+  @spec describe_addresses(opts :: describe_addresses_opts) :: ExAws.Operation.Query.t
+  def describe_addresses(opts \\ []) do
+    opts |> build_request(:describe_addresses)
+  end
+
+  @doc """
+  Describes one or more of your network interfaces.
+
+  Doc: https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html
+
+  ## Examples:
+    iex> EC2.describe_network_interfaces()
+      %ExAws.Operation.Query{
+        action: :describe_network_interfaces,
+        params: %{"Action" => "DescribeNetworkInterfaces", "Version" => "2016-11-15"},
+        parser: &ExAws.Utils.identity/2,
+        path: "/",
+        service: :ec2
+      }
+
+    iex> EC2.describe_network_interfaces([network_interface_id: ["eni-abcd1234"]])
+      %ExAws.Operation.Query{
+        action: :describe_network_interfaces,
+        params: %{
+          "Action" => "DescribeNetworkInterfaces",
+          "NetworkInterfaceId.1" => "eni-abcd1234",
+          "Version" => "2016-11-15"
+        },
+        parser: &ExAws.Utils.identity/2,
+        path: "/",
+        service: :ec2
+      }
+
+  """
+  @type describe_network_interfaces_opts :: [
+    filters: [filter, ...],
+    dry_run: boolean,
+    network_interface_id: [binary, ...],
+    next_token: binary,
+    max_results: integer
+  ]
+  @spec describe_network_interfaces() :: ExAws.Operation.Query.t
+  @spec describe_network_interfaces(opts :: describe_network_interfaces_opts) :: ExAws.Operation.Query.t
+  def describe_network_interfaces(opts \\ []) do
+    opts |> build_request(:describe_network_interfaces)
   end
 
   #######################
