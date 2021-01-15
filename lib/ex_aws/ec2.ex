@@ -326,6 +326,20 @@ defmodule ExAws.EC2 do
     opts |> build_request(:describe_instance_status)
   end
 
+  @type describe_instance_types_opts :: [
+    dry_run: boolean,
+    instance_types: [binary, ...],
+    filters: [filter, ...],
+    starting_token: binary,
+    page_size: integer,
+    max_items: integer
+  ]
+  @spec describe_instance_types() :: ExAws.Operation.Query.t
+  @spec describe_instance_types(opts :: describe_instance_types_opts) :: ExAws.Operation.Query.t
+  def describe_instance_types(opts \\ []) do
+    opts |> build_request(:describe_instance_types)
+  end
+
 
   @doc """
   Shuts down one or more instances. Terminated instances remain visible after
