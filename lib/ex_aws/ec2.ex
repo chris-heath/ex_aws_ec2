@@ -330,7 +330,7 @@ defmodule ExAws.EC2 do
     dry_run: boolean,
     instance_types: [binary, ...],
     filters: [filter, ...],
-    starting_token: binary,
+    next_token: binary,
     page_size: integer,
     max_items: integer
   ]
