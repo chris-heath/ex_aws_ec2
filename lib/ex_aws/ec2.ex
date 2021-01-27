@@ -2762,6 +2762,22 @@ defmodule ExAws.EC2 do
    |> build_request(:revoke_security_group_egress)
  end
 
+ ##############################
+  # Route Tables Operations #
+ ##############################
+ @type describe_route_tables_opts :: [
+   filters: [filter, ...],
+   dry_run: boolean,
+   route_table_ids: [binary, ...],
+   next_token: binary,
+   max_results: integer
+ ]
+ @spec describe_route_tables() :: ExAws.Operation.Query.t
+ @spec describe_route_tables(opts :: describe_route_tables_opts) :: ExAws.Operation.Query.t
+ def describe_route_tables(opts \\ []) do
+   opts |> build_request(:describe_route_tables)
+ end
+
 
   ####################
   # Helper Functions #
