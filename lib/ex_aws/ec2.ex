@@ -2127,6 +2127,49 @@ defmodule ExAws.EC2 do
   end
 
   @doc """
+  Describes one or more of your VPN Gateways.
+
+  Doc: https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpn-gateways.html
+
+  ## Examples:
+
+    iex> ExAws.EC2.describe_vpn_gateways(vpn_gateway_ids: ["vgw-12345", "vgw-67890"])
+    %ExAws.Operation.Query{
+      action: :describe_vpn_gateways,
+      content_encoding: "identity",
+      params: %{
+        "Action" => "DescribeVpnGateways",
+        "Version" => "2016-11-15",
+        "VpnGatewayIds.1" => "vgw-12345",
+        "VpnGatewayIds.2" => "vgw-67890"
+      },
+      parser: &ExAws.Utils.identity/2,
+      path: "/",
+      service: :ec2
+    }
+
+    iex> ExAws.EC2.describe_vpn_gateways()
+    %ExAws.Operation.Query{
+      action: :describe_vpn_gateways,
+      content_encoding: "identity",
+      params: %{"Action" => "DescribeVpnGateways", "Version" => "2016-11-15"},
+      parser: &ExAws.Utils.identity/2,
+      path: "/",
+      service: :ec2
+    }
+  """
+  @type describe_vpn_gateways_opts :: [
+    dry_run: boolean,
+    filters: [filter, ...],
+    vpn_gateway_ids: [binary, ...]
+  ]
+  @spec describe_vpn_gateways() :: ExAws.Operation.Query.t
+  @spec describe_vpn_gateways(opts :: describe_vpn_gateways_opts) :: ExAws.Operation.Query.t
+  def describe_vpn_gateways(opts \\ []) do
+    opts |> build_request(:describe_vpn_gateways)
+  end
+
+  @doc """
   Creates a VPC with the specified CIDR block.
 
   Doc: http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpc.html
