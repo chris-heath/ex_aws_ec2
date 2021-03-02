@@ -2253,6 +2253,23 @@ defmodule ExAws.EC2 do
     |> build_request(:describe_vpc_attribute)
   end
 
+  @doc """
+  Describes one or more of your VPC endpoints.
+
+  Doc: https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpc-endpoints.html
+  """
+  @type describe_vpc_endpoints_opts :: [
+    dry_run: boolean,
+    vpc_endpoint_ids: [binary, ...],
+    filters: [filter, ...],
+    max_results: integer,
+    next_token: binary
+  ]
+  @spec describe_vpc_endpoints() :: ExAws.Operation.Query.t
+  @spec describe_vpc_endpoints(opts :: describe_vpc_endpoints_opts) :: ExAws.Operation.Query.t
+  def describe_vpc_endpoints(opts \\ []) do
+    opts |> build_request(:describe_vpc_endpoints)
+  end
 
   @doc """
   Modifies the specified attribute of the specified VPC.
