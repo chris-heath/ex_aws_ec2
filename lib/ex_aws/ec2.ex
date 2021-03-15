@@ -2283,7 +2283,7 @@ defmodule ExAws.EC2 do
     next_token: binary,
     max_results: integer
   ]
-  @spec describe_vpc_peering_connections(): ExAws.Operation.Query.t
+  @spec describe_vpc_peering_connections() :: ExAws.Operation.Query.t
   @spec describe_vpc_peering_connections(opts :: describe_vpc_peering_connections_opts) :: ExAws.Operation.Query.t
   def describe_vpc_peering_connections(opts \\ []) do
     opts |> build_request(:describe_vpc_peering_connections)
