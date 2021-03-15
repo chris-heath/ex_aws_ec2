@@ -2272,6 +2272,24 @@ defmodule ExAws.EC2 do
   end
 
   @doc """
+  Describes one or more of your VPC Peering connections.
+
+  Doc: https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpc-peering-connections.html
+  """
+  @type describe_vpc_peering_connections_opts :: [
+    filters: [filter, ...],
+    dry_run: boolean,
+    vpc_peering_connection_ids: [binary, ...],
+    next_token: binary,
+    max_results: integer
+  ]
+  @spec describe_vpc_peering_connections(): ExAws.Operation.Query.t
+  @spec describe_vpc_peering_connections(opts :: describe_vpc_peering_connections_opts) :: ExAws.Operation.Query.t
+  def describe_vpc_peering_connections(opts \\ []) do
+    opts |> build_request(:describe_vpc_peering_connections)
+  end
+
+  @doc """
   Modifies the specified attribute of the specified VPC.
 
   Doc: http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcAttribute.html
