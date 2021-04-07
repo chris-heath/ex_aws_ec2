@@ -2316,6 +2316,28 @@ defmodule ExAws.EC2 do
     |> build_request(:modify_vpc_attribute)
   end
 
+  ###############################
+  # Transit Gateways Operations #
+  ###############################
+
+  @doc """
+  Describes one or more transit gateways. By default, all transit gateways are described. Alternatively, you can filter the results.
+
+  Doc: https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-transit-gateways.html
+  """
+  @type describe_transit_gateways_opts :: [
+    transit_gateways_ids: [binary, ...],
+    filters: [filter, ...],
+    max_results: integer,
+    next_token: binary,
+    dry_run: boolean
+  ]
+  @spec describe_transit_gateways() :: ExAws.Operation.Query.t
+  @spec describe_transit_gateways(opts :: describe_transit_gateways_opts) :: ExAws.Operation.Query.t
+  def describe_transit_gateways(opts \\ []) do
+    opts |> build_request(:describe_transit_gateways)
+  end
+
   ######################
   # Subnets Operations #
   ######################
