@@ -2338,6 +2338,27 @@ defmodule ExAws.EC2 do
     opts |> build_request(:describe_transit_gateways)
   end
 
+  ###############################
+  # Customer Gateways Operations #
+  ###############################
+
+  @doc """
+  Describes one or more of your VPN customer gateways.
+  By default, all customer gateways are described. Alternatively, you can filter the results.
+
+  Doc: https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-customer-gateways.html
+  """
+  @type describe_customer_gateways_opts :: [
+    customer_gateway_ids: [binary, ...],
+    filters: [filter, ...],
+    dry_run: boolean
+  ]
+  @spec describe_customer_gateways() :: ExAws.Operation.Query.t
+  @spec describe_customer_gateways(opts :: describe_customer_gateways_opts) :: ExAws.Operation.Query.t
+  def describe_customer_gateways(opts \\ []) do
+    opts |> build_request(:describe_customer_gateways)
+  end
+
   ######################
   # Subnets Operations #
   ######################
