@@ -2170,6 +2170,22 @@ defmodule ExAws.EC2 do
   end
 
   @doc """
+  Describes one or more of your VPN connections.
+
+  Doc: https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpn-connections.html
+  """
+  @type describe_vpn_connections_opts :: [
+    dry_run: boolean,
+    filters: [filter, ...],
+    vpn_connection_ids: [binary, ...]
+  ]
+  @spec describe_vpn_connections() :: ExAws.Operation.Query.t
+  @spec describe_vpn_connections(opts :: describe_vpn_connections_opts) :: ExAws.Operation.Query.t
+  def describe_vpn_connections(opts \\ []) do
+    opts |> build_request(:describe_vpn_connections)
+  end
+
+  @doc """
   Creates a VPC with the specified CIDR block.
 
   Doc: http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpc.html
