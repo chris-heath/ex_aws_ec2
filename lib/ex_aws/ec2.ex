@@ -2288,6 +2288,77 @@ defmodule ExAws.EC2 do
   end
 
   @doc """
+  Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that are pending your acceptance.
+
+  Doc: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointConnections.html
+  """
+  @type describe_vpc_endpoint_connections_opts :: [
+    dry_run: boolean,
+    filters: [filter, ...],
+    max_results: integer,
+    next_token: binary
+  ]
+  @spec describe_vpc_endpoint_connections() :: ExAws.Operation.Query.t
+  @spec describe_vpc_endpoint_connections(opts :: describe_vpc_endpoint_connections_opts) :: ExAws.Operation.Query.t
+  def describe_vpc_endpoint_connections(opts \\ []) do
+    opts |> build_request(:describe_vpc_endpoint_connections)
+  end
+
+  @doc """
+  Describes the connection notifications for VPC endpoints and VPC endpoint services
+
+  Doc: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointConnectionNotifications.html
+  """
+  @type describe_vpc_endpoint_connection_notifications_opts :: [
+    dry_run: boolean,
+    connection_notification_id: binary,
+    filters: [filter, ...],
+    max_results: integer,
+    next_token: binary
+  ]
+  @spec describe_vpc_endpoint_connection_notifications() :: ExAws.Operation.Query.t
+  @spec describe_vpc_endpoint_connection_notifications(opts :: describe_vpc_endpoint_connection_notifications_opts) :: ExAws.Operation.Query.t
+  def describe_vpc_endpoint_connection_notifications(opts \\ []) do
+    opts |> build_request(:describe_vpc_endpoint_connection_notifications)
+  end
+
+  @doc """
+  Describes the VPC endpoint service configurations in your account (your services).
+
+  Doc: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServiceConfigurations.html
+  """
+  @type describe_vpc_endpoint_service_configurations_opts :: [
+    dry_run: boolean,
+    service_ids: [binary, ...],
+    filters: [filter, ...],
+    max_results: integer,
+    next_token: binary
+  ]
+  @spec describe_vpc_endpoint_service_configurations() :: ExAws.Operation.Query.t
+  @spec describe_vpc_endpoint_service_configurations(opts :: describe_vpc_endpoint_service_configurations_opts) :: ExAws.Operation.Query.t
+  def describe_vpc_endpoint_service_configurations(opts \\ []) do
+    opts |> build_request(:describe_vpc_endpoint_service_configurations)
+  end
+
+  @doc """
+  Describes the VPC endpoint service configurations in your account (your services).
+
+  Doc: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServicePermissions.html
+  """
+  @type describe_vpc_endpoint_service_permissions_opts :: [
+    dry_run: boolean,
+    service_id: binary,
+    filters: [filter, ...],
+    max_results: integer,
+    next_token: binary
+  ]
+  @spec describe_vpc_endpoint_service_permissions() :: ExAws.Operation.Query.t
+  @spec describe_vpc_endpoint_service_permissions(opts :: describe_vpc_endpoint_service_permissions_opts) :: ExAws.Operation.Query.t
+  def describe_vpc_endpoint_service_permissions(opts \\ []) do
+    opts |> build_request(:describe_vpc_endpoint_service_permissions)
+  end
+
+  @doc """
   Describes one or more of your VPC Peering connections.
 
   Doc: https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpc-peering-connections.html
