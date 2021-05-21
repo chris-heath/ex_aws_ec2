@@ -2479,17 +2479,17 @@ defmodule ExAws.EC2 do
 
   Doc: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeDhcpOptions.html
   """
-  @type describe_dchp_options_opts :: [
+  @type describe_dhcp_options_opts :: [
     dhcp_options_ids: [binary, ...],
     filters: [filter, ...],
     max_results: integer,
     next_token: binary,
     dry_run: boolean
   ]
-  @spec describe_dchp_options() :: ExAws.Operation.Query.t
-  @spec describe_dchp_options(opts :: describe_dchp_options_opts) :: ExAws.Operation.Query.t
-  def describe_dchp_options(opts \\ []) do
-    opts |> build_request(:describe_dchp_options)
+  @spec describe_dhcp_options() :: ExAws.Operation.Query.t
+  @spec describe_dhcp_options(opts :: describe_dhcp_options_opts) :: ExAws.Operation.Query.t
+  def describe_dhcp_options(opts \\ []) do
+    opts |> build_request(:describe_dhcp_options)
   end
 
   ######################
