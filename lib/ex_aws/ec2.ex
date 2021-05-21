@@ -2446,6 +2446,52 @@ defmodule ExAws.EC2 do
     opts |> build_request(:describe_customer_gateways)
   end
 
+  ###############################
+  # Internet Gateways Operations #
+  ###############################
+
+  @doc """
+  Describes one or more of your internet gateways.
+  By default, all internet gateways are described. Alternatively, you can filter the results.
+
+  Doc: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInternetGateways.html
+  """
+  @type describe_internet_gateways_opts :: [
+    internet_gateway_ids: [binary, ...],
+    filters: [filter, ...],
+    max_results: integer,
+    next_token: binary,
+    dry_run: boolean
+  ]
+  @spec describe_internet_gateways() :: ExAws.Operation.Query.t
+  @spec describe_internet_gateways(opts :: describe_internet_gateways_opts) :: ExAws.Operation.Query.t
+  def describe_internet_gateways(opts \\ []) do
+    opts |> build_request(:describe_internet_gateways)
+  end
+
+  ###############################
+  # DHCP options set Operations #
+  ###############################
+
+  @doc """
+  Describes one or more of your DHCP options sets.
+  By default, all DHCP options sets are described. Alternatively, you can filter the results.
+
+  Doc: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeDhcpOptions.html
+  """
+  @type describe_dchp_options_opts :: [
+    dhcp_options_ids: [binary, ...],
+    filters: [filter, ...],
+    max_results: integer,
+    next_token: binary,
+    dry_run: boolean
+  ]
+  @spec describe_dchp_options() :: ExAws.Operation.Query.t
+  @spec describe_dchp_options(opts :: describe_dchp_options_opts) :: ExAws.Operation.Query.t
+  def describe_dchp_options(opts \\ []) do
+    opts |> build_request(:describe_dchp_options)
+  end
+
   ######################
   # Subnets Operations #
   ######################
